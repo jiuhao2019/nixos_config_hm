@@ -406,4 +406,18 @@ Before doing so, re-align the table if necessary."
       '((auto-mode . emacs)
         ("\\.pdf\\'" . "okular %s")
         (system . default)))
+
+(with-eval-after-load 'vim-tab-bar
+  (set-face-attribute 'tab-bar nil
+                      :background "#282828"
+                      :foreground "#928374")
+
+  (set-face-attribute 'tab-bar-tab nil
+                      :background "#d79921"
+                      :foreground "#282828"
+                      :weight 'bold)
+
+  (set-face-attribute 'tab-bar-tab-inactive nil
+                      :background "#3c3836"
+                      :foreground "#a89984"))
 (provide 'user-org)

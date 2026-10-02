@@ -14,8 +14,7 @@ set -gx PATH /usr/local/bin $PATH
 set -gx PATH /usr/bin $PATH
 
 abbr ls "eza"
-abbr ll "eza -al --git"
-abbr lt "eza -T"
+abbr ll "eza -T"
 abbr ld "eza -lD"
 
 function gg

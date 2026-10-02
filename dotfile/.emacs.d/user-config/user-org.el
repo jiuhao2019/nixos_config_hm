@@ -161,7 +161,7 @@
  (custom-set-faces
   '(org-tag
     ((t (:foreground "#83a598"
-         :background "#665c54"
+         :background "#504945"
          :weight medium
          :height 1.0)))))
 

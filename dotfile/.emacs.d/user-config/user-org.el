@@ -161,9 +161,9 @@
  (custom-set-faces
   '(org-tag
     ((t (:foreground "#83a598"
- 		    :background "#282828"
- 		    :weight medium
- 		    :height 1.0)))))
+         :background "#eb2828"
+         :weight medium
+         :height 1.0)))))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Add frame borders and window dividers

@@ -265,17 +265,17 @@ vim.o.mouse = "nv"
 
 -- limit completion popup to height of 10
 vim.o.pumheight = 10
-vim.cmd("colorscheme vimbones")
--- zenwritten	
--- neobones	
--- zenbones	
--- vimbones	
--- rosebones	
--- forestbones	
--- nordbones	
--- tokyobones	
--- seoulbones	
--- duckbones	
--- zenburned	
--- kanagawabones	
+vim.cmd("colorscheme forestbones")
+-- zenwritten
+-- neobones
+-- zenbones
+-- vimbones
+-- rosebones
+-- forestbones
+-- nordbones
+-- tokyobones
+-- seoulbones
+-- duckbones
+-- zenburned
+-- kanagawabones
 -- randombones

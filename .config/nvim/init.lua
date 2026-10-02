@@ -37,7 +37,7 @@ require("plugin.dropbar")
 require("plugin.im-select")
 
 -- gruvbox-flat
-require("plugin.gruvbox-flat")
+-- require("plugin.gruvbox-flat")
 
 -- 侧边栏显示函数大纲
 require("plugin.tagbar")

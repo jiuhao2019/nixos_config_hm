@@ -158,13 +158,22 @@
 ;; ;;;;;;;;;;;;;;;;;
 ;; 设置tag背景和前景色
 ;; ;;;;;;;;;;;;;;;;;
- (custom-set-faces
+(custom-set-faces
   '(org-tag
     ((t (:foreground "#83a598"
          :background "#504945"
          :weight medium
          :height 1.0)))))
 
+(defun my-org-tag-delimiter-face ()
+  (font-lock-add-keywords
+   nil
+   '(("\\(:\\)\\([^:\n]+\\)\\(:\\)"
+      (1 '(:foreground "#504945") prepend)
+      (3 '(:foreground "#504945") prepend)))
+   'append))
+
+(add-hook 'org-mode-hook #'my-org-tag-delimiter-face)
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Add frame borders and window dividers
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

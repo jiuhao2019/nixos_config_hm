@@ -20,25 +20,24 @@
 
 (require 'user-base)
 (require 'user-evil)
-(require 'user-tab)
 (require 'user-motion)
 (require 'user-ui)
 (require 'user-file-explorer)
 (require 'user-autocomplete)
 (require 'user-org)
+(require 'user-tab)
 (require 'user-keybind)
 (require 'user-font)
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(custom-set-variables)
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+ '(tab-bar
+   ((t (:background "#282828" :foreground "#928374"))))
+ '(tab-bar-tab
+   ((t (:background "#504945"
+         :foreground "#ebdbb2"
+         :weight bold))))
+ '(tab-bar-tab-inactive
+   ((t (:background "#282828"
+         :foreground "#7c6f64")))))

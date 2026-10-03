@@ -15,6 +15,10 @@ local config = utils.merge(table.unpack(modules))
 
 -- ===============================--
 --以便单独设置背景色--
+--
+--yellow        #D79921
+--bright_yellow #FABD2F
+--淡蓝色        #83a598
 --===============================--
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.colors = {

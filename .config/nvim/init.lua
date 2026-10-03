@@ -7,7 +7,7 @@ require("base.options")
 require("plugin.mini_files")
 
 -- 左列标记显示行有修改
-require("plugin.mini-files")
+require("plugin.mini-diff")
 
 -- 格式化代码
 require("plugin.conform")

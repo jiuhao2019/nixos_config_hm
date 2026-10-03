@@ -56,4 +56,3 @@ require("mini.diff").setup({
 		wrap_goto = false,
 	},
 })
-

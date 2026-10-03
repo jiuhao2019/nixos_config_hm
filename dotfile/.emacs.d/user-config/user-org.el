@@ -411,9 +411,27 @@ Before doing so, re-align the table if necessary."
         (delete-region (line-beginning-position)
                        (min (point-max)
                             (1+ (line-end-position))))))))
+
 (setq org-file-apps
       '((auto-mode . emacs)
         ("\\.pdf\\'" . "okular %s")
         (system . default)))
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;         buffer auto save
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'buffer-guardian)
+
+(setq buffer-guardian-inhibit-saving-remote-files t
+      buffer-guardian-inhibit-saving-nonexistent-files nil
+      buffer-guardian-save-on-same-buffer-window-change t
+      buffer-guardian-verbose nil
+      buffer-guardian-override-save-some-buffers nil)
+
+(setq buffer-guardian-save-all-buffers-idle 30
+      buffer-guardian-save-all-buffers-interval (* 60 30))
+(buffer-guardian-mode 1)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;         end
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'user-org)

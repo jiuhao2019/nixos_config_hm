@@ -1,48 +1,26 @@
 ;; -*- lexical-binding: t; -*-
 
 (require 'org)
-;; capture目录
-(setq my-capture-directory
-  (expand-file-name "~/Downloads/note/capture-file/"))
-(make-directory
- (file-name-directory my-capture-directory)
- t)
-;; counsel-find-file 进入目录
-(defun my-counsel-find-capture ()
-  (interactive)
-  (let ((default-directory (expand-file-name my-capture-directory)))
-    (counsel-find-file)))
 
-(setq org-directory
-  (expand-file-name "~/Downloads/note/org-files/"))
-(make-directory
- (file-name-directory org-directory)
- t)
-(defun my/counsel-org-find ()
-  (interactive)
-  (counsel-find-file org-directory))
+;; capture目录
+(setq my-capture-directory (expand-file-name "~/Downloads/note/capture-file/"))
+(make-directory (file-name-directory my-capture-directory) t)
+
+;; counsel-find-file 进入目录
+(defun my-counsel-find-capture () (interactive) (let ((default-directory (expand-file-name my-capture-directory))) (counsel-find-file)))
+(setq org-directory (expand-file-name "~/Downloads/note/org-files/")) (make-directory (file-name-directory org-directory) t)
+(defun my/counsel-org-find () (interactive) (counsel-find-file org-directory))
 
 ;; 如果不存在，则递归创建目录
 (defconst my-org-dir "~/Downloads/note/")
 (make-directory my-org-dir t)
 
-(setq org-default-notes-file
-      "~/Downloads/note/inbox.org")
+(setq org-default-notes-file "~/Downloads/note/inbox.org")
 
 (setq org-capture-templates
-      '(
-        ("t" "Todo" entry
-         (file "~/Downloads/note/capture-file/tasks.org")
-         "* TODO %?\n  %U\n")
-
-        ("n" "Note" entry
-         (file "~/Downloads/note/capture-file/inbox.org")
-         "* %U %?\n")
-
-        ("j" "Journal" entry
-         (file+datetree "~/Downloads/note/capture-file/journal.org")
-         "* %U\n%?\n")
-        ))
+      '(("t" "Todo" entry (file "~/Downloads/note/capture-file/tasks.org") "* TODO %?\n  %U\n")
+        ("n" "Note" entry (file "~/Downloads/note/capture-file/inbox.org") "* %U %?\n")
+        ("j" "Journal" entry (file+datetree "~/Downloads/note/capture-file/journal.org") "* %U\n%?\n")))
 
 ;; 这个选项用于强制 TODO 依赖关系。
 ;; 当一个父任务包含未完成的子任务时，父任务不能被标记为 DONE。
@@ -86,18 +64,13 @@
 (setq org-agenda-start-with-log-mode t)
 (setq org-agenda-span 7)
 
-(setq org-todo-keywords
-      '((sequence "TODO(t@/!)" "PENDING(p@/!)" "|" "FINISHED(f@/!)" "NOTE(n@/!)" )))
-(setq org-tag-alist
-      '(("toc" . ?1)
-	("work" . ?2)))
+(setq org-todo-keywords '((sequence "TODO(t@/!)" "PENDING(p@/!)" "|" "FINISHED(f@/!)" "NOTE(n@/!)" )))
+(setq org-tag-alist '(("toc" . ?1) ("work" . ?2)))
 
 ;; reduce space between header and tags
 (setq org-tags-column 47)
 
-(add-hook 'org-mode-hook (defun user/org-mode-setup()
-			   (org-indent-mode)
-			   (variable-pitch-mode 1)))
+(add-hook 'org-mode-hook (defun user/org-mode-setup() (org-indent-mode) (variable-pitch-mode 1)))
 ;; 禁用自动缩进
 (setq org-startup-indented nil)
 
@@ -129,17 +102,14 @@
 ;; 所有 #+begin_src xxx 和 #+end_src 本身字符都会被隐藏
 (defun my/org-hide-block-delimiters ()
   "Hide #+begin_xxx / #+end_xxx lines in org-mode."
-  (font-lock-add-keywords
-   nil
+  (font-lock-add-keywords nil
    '(("^#\\+\\(begin\\|end\\)_[a-zA-Z0-9_-]+.*" ;; 匹配 #+begin_xxx / #+end_xxx
       0 'org-hide prepend))
    'append))
 (add-hook 'org-mode-hook #'my/org-hide-block-delimiters)
 
 ;; 打开org文件默认折叠所有内容
-(add-hook 'org-mode-hook
-          (lambda ()
-            (add-hook 'find-file-hook (lambda () (org-overview)) nil t)))
+(add-hook 'org-mode-hook (lambda () (add-hook 'find-file-hook (lambda () (org-overview)) nil t)))
 
 ;; agenda界面的移动键
 (with-eval-after-load 'org-agenda
@@ -149,8 +119,7 @@
   (define-key org-agenda-mode-map (kbd "l") 'org-agenda-later))
 
 ;; 关闭emacs后关闭后台gpg-agent，清除缓存的密码
-(add-hook 'kill-emacs-hook (defun personal-kill-gpg-agent ()
-			     (shell-command "pkill gpg-agent")))
+(add-hook 'kill-emacs-hook (defun personal-kill-gpg-agent () (shell-command "pkill gpg-agent")))
 
 ;; 含义：只有 _{...} / ^{...} 才会被当作上下标。
 (setq org-use-sub-superscripts '{})
@@ -177,29 +146,22 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Add frame borders and window dividers
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(modify-all-frames-parameters
- '((right-divider-width . 10)
-   (internal-border-width . 10)))
-(dolist (face '(window-divider
-                window-divider-first-pixel
-                window-divider-last-pixel))
+(modify-all-frames-parameters '((right-divider-width . 10) (internal-border-width . 10)))
+(dolist (face '(window-divider window-divider-first-pixel window-divider-last-pixel))
   (face-spec-reset-face face)
   (set-face-foreground face (face-attribute 'default :background)))
 (set-face-background 'fringe (face-attribute 'default :background))
 
-(setq
- ;; Edit settings
- org-auto-align-tags nil
- org-tags-column 0
- org-catch-invisible-edits 'show-and-error
- org-special-ctrl-a/e t
- org-insert-heading-respect-content t
-
- ;; Org styling, hide markup etc.
- org-hide-emphasis-markers t
- org-pretty-entities t
- org-agenda-tags-column 0
- org-ellipsis "…")
+(setq org-auto-align-tags nil
+      org-tags-column 0
+      org-catch-invisible-edits 'show-and-error
+      org-special-ctrl-a/e t
+      org-insert-heading-respect-content t
+      ;; Org styling, hide markup etc.
+      org-hide-emphasis-markers t
+      org-pretty-entities t
+      org-agenda-tags-column 0
+      org-ellipsis "…")
 
 ;; 这样 C-c C-q 会进入 minibuffer 输入模式，而不是弹出选择界面
 (setq org-use-fast-tag-selection nil)
@@ -207,33 +169,24 @@
 (setq org-refile-use-outline-path 'file)
 (setq org-outline-path-complete-in-steps nil)
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;              org bullet
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'org-bullets)
 ;;(setq org-bullets-bullet-list '("⓿" "❶" "❷" "❸" "❹" "❺" "❻" "❼" "❽" "❾"))
 ;;(setq org-bullets-bullet-list '("⁰" "¹" "²" "³" "⁴" "⁵" "⁶" "⁷" "⁸" "⁹"))
 (setq org-bullets-bullet-list '("₀" "₁" "₂" "₃" "₄" "₅" "₆" "₇" "₈" "₉"))
 ;;(setq org-bullets-bullet-list '("①" "②" "③" "④" "⑤" "⑥" "⑦" "⑧" "⑨"))
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-;; Org Agenda files
-;; ============================================================
-;; 只有这里的文件参与 Agenda
-(setq org-agenda-files
-      (append
-       (directory-files-recursively "~/Downloads/note/org-files" "\\.org$")))
-;(setq org-agenda-files
-;      '("~/Downloads/note/org-files/inbox.org"
-;        "~/Downloads/note/projects/project-a.org"
-;        "~/Downloads/note/projects/project-b.org"))
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;              end
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; 将标题refile到哪里去 -> 目标文件夹或文件
-;;能refile到哪些级别标记去，这里设置能去的是最大第9层标题
-;; ------------------------------------------------------------
-;; Org Refile Targets
-;;
-;; 每次执行 Refile 时动态获取 .org 文件
-;; 不会出现 *.org 作为目标
-;; ------------------------------------------------------------
-(setq org-refile-targets
-      '((nil :maxlevel . 9)))
+;; Org Agenda files
+;; 只有这里的文件参与 Agenda
+(setq org-agenda-files (append (directory-files-recursively "~/Downloads/note/org-files" "\\.org$")))
+
+(setq org-refile-targets '((nil :maxlevel . 9)))
 
 (defcustom my-org-directories
   '("~/Downloads/note/capture-file/"
@@ -285,9 +238,10 @@
 (setq valign-ellipses nil)          ;; 省略号显示
 (setq valign-enforce-alignment t)
 (setq valign-resize-separator t)
-(setq valign-autorefresh-rate 1.5)  ;; 刷新
-;;(add-hook 'org-mode-hook #'valign-mode)
+(setq valign-autorefresh-rate 1.5)
+(add-hook 'org-mode-hook #'valign-mode)
 
+;; 将选择区域设置为src块
 (defun my-org-region-to-c-src (beg end)
   "Wrap region in an Org C source block."
   (interactive "r")
@@ -301,6 +255,7 @@
             "#+end_src\n")))
 ;;(global-set-key (kbd "C-c C-b c") #'my-org-region-to-c-src)
 
+;; 将html导出为org
 (defun my-html-to-org (file)
   (interactive "fHTML file: ")
   (let ((output (concat (file-name-sans-extension file) ".org")))

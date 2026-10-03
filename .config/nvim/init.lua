@@ -62,7 +62,7 @@ require("plugin.colorize")
 require("plugin.unclash")
 
 -- fold
-require("plugin.origami")
+require("plugin.nvim-origami")
 
 ---- ---------------------------------------- 自定义的功能函数
 require("functions.quickfix_next").setup()

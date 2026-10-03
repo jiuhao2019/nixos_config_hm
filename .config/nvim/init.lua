@@ -6,8 +6,6 @@ require("base.options")
 -- 文件浏览
 require("plugin.mini_files")
 
-
-
 -- 格式化代码
 require("plugin.conform")
 
@@ -66,8 +64,7 @@ require("plugin.unclash")
 
 -- fold
 require("plugin.nvim-origami")
--- 左列标记显示行有修改
-require("plugin.mini-diff")
+
 -- quickfix窗口预览条目,可前一个后一个
 require("functions.quickfix_next").setup()
 

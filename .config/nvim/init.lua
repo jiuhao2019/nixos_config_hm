@@ -61,6 +61,9 @@ require("plugin.colorize")
 -- It includes a 3-way merge editor, clickable actions, and seamless integration with existing tools.
 require("plugin.unclash")
 
+-- fold
+require("plugin.origami")
+
 ---- ---------------------------------------- 自定义的功能函数
 require("functions.quickfix_next").setup()
 require("functions.multi_substitue").setup()

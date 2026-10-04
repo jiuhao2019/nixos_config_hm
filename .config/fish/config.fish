@@ -104,3 +104,20 @@ if status is-login
     and isatty stdin
     startx
 end
+
+# 带进度条的mv 和cp
+# mvg source destination
+function mvg
+    rsync -a --human-readable --info=progress2 --remove-source-files $argv
+    if test $status -eq 0
+        for src in $argv[1..-2]
+            if test -d "$src"
+                find "$src" -depth -type d -empty -delete
+            end
+        end
+    end
+end
+
+function cpg
+    rsync -a --human-readable --info=progress2 $argv
+end

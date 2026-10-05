@@ -235,7 +235,8 @@ globalkeys = gears.table.join(
 	end),
 
 	awful.key({ modkey }, "Return", function()
-		awful.spawn.with_shell("wezterm start -- tmux")
+		-- awful.spawn.with_shell("wezterm start -- tmux")
+		awful.spawn.with_shell("xterm -e tmux")
 	end),
 
 	awful.key({ modkey }, "r", function()

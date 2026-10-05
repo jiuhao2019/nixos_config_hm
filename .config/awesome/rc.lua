@@ -81,8 +81,8 @@ local function run_once(process, cmd)
 	cmd = cmd or process
 	awful.spawn.with_shell(string.format("pgrep -x '%s' > /dev/null || %s", process, cmd))
 end
-
-run_once("wezterm-gui", "wezterm start -- tmux")
+run_once("xterm", "xterm -e tmux")
+-- run_once("wezterm-gui", "wezterm start -- tmux")
 run_once("picom", "picom --config ~/.config/picom/picom.conf")
 run_once("clash-verge","sudo env WEBKIT_DISABLE_DMABUF_RENDERER=1 $(which clash-verge)")
 run_once("emacs","emacs")

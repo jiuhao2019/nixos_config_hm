@@ -12,7 +12,7 @@ in
   home.file.".vim".source = ./.vim;
   home.file.".gitconfig".source = ./dotfile/.gitconfig;
   home.file.".xinitrc".source = ./dotfile/.xinitrc;
-  # home.file.".Xresources".source = ./dotfile/.Xresources;
+  home.file.".Xresources".source = ./dotfile/.Xresources;
   home.file.".tmux.conf".source = ./dotfile/.tmux.conf;
   home.file.".emacs.d".source = ./dotfile/.emacs.d;
   home.file.".astylerc".source = ./dotfile/.astylerc;
@@ -79,7 +79,7 @@ home.packages =
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Amber";
     size = 11;
-    x11.enable = true;
+    x11.enable = false;
     gtk.enable = true;
   };
   gtk = {

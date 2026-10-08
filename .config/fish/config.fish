@@ -20,9 +20,10 @@ abbr ld "eza -lD"
 function gg
     git add . && git commit -m (date '+%Y-%m-%d %H:%M:%S')
 end
-abbr gs "git push"
+abbr gs "git status"
 abbr gd "git diff"
 abbr gl "git pull"
+abbr gp "git push"
 
 abbr rm "rm -irv"
 

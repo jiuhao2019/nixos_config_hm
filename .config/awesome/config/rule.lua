@@ -96,11 +96,22 @@ awful.rules.rules = {
 		end,
 	},
 	{
+		rule = { class = "XTerm" },
+		properties = {
+			screen = 1,
+			tag = "⒉   ",
+			switch_to_tags = true,
+			maximized = true,
+			-- fullscreen = true,
+		},
+	},
+	{
 		rule = { class = "Chromium" },
 		properties = {
 			screen = 1,
 			tag = "⒉   ",
 			switch_to_tags = true,
+			maximized = true,
 		},
 	},
 	{
@@ -110,6 +121,7 @@ awful.rules.rules = {
 			tag = "⒊   ",
 			switch_to_tags = true,
 			size_hints_honor = false,
+			maximized = true,
 		},
 	},
 	{
@@ -119,6 +131,7 @@ awful.rules.rules = {
 			tag = "⒋   ",
 			switch_to_tags = true,
 			placement = awful.placement.centered,
+			maximized = true,
 		},
 	},
 	{
@@ -129,42 +142,7 @@ awful.rules.rules = {
 			screen = 1,
 			tag = "⒌   ",
 			switch_to_tags = true,
-		},
-	},
-	{
-		rule = { class = "v2rayN" },
-		properties = {
-			screen = 1,
-			tag = "⒍   ",
-			switch_to_tags = false,
-			placement = awful.placement.centered,
-		},
-	},
-	{
-		rule = { class = "mihomo-party" },
-		properties = {
-			screen = 1,
-			tag = "⒍   ",
-			switch_to_tags = false,
-			placement = awful.placement.centered,
-		},
-	},
-	{
-		rule = { class = "Com.follow.clash" },
-		properties = {
-			screen = 1,
-			tag = "⒍   ",
-			switch_to_tags = false,
-			placement = awful.placement.centered,
-		},
-	},
-	{
-		rule = { class = "Clash-nyanpasu" },
-		properties = {
-			screen = 1,
-			tag = "⒍   ",
-			switch_to_tags = false,
-			placement = awful.placement.centered,
+			maximized = true,
 		},
 	},
 	{
@@ -174,6 +152,7 @@ awful.rules.rules = {
 			tag = "⒍   ",
 			switch_to_tags = false,
 			placement = awful.placement.centered,
+			maximized = true,
 		},
 	},
 }

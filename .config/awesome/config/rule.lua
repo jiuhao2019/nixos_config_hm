@@ -99,7 +99,7 @@ awful.rules.rules = {
 		rule = { class = "XTerm" },
 		properties = {
 			screen = 1,
-			tag = "⒉   ",
+			tag = "⒈   ",
 			switch_to_tags = true,
 			maximized = true,
 			-- fullscreen = true,

@@ -82,18 +82,9 @@ awful.rules.rules = {
 			screen = 1,
 			tag = "⒈   ",
 			switch_to_tags = true,
+			maximized = true,
 			placement = awful.placement.centered,
 		},
-		callback = function(c)
-			local g = c.screen.workarea
-
-			c:geometry({
-				x = g.x + 700,
-				y = g.y + 50,
-				width = math.floor(g.width * 0.5),
-				height = math.floor(g.height * 0.8),
-			})
-		end,
 	},
 	{
 		rule = { class = "XTerm" },

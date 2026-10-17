@@ -27,6 +27,7 @@ in
   xdg.configFile."rofi".source = ./.config/rofi;
   xdg.configFile."dunst".source = ./.config/dunst;
   xdg.configFile."lf".source = ./.config/lf;
+  xdg.configFile."yazi".source = ./.config/yazi;
 
 home.packages =
   (with pkgs; [

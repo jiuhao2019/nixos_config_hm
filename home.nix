@@ -108,6 +108,9 @@ home.packages =
     enable = true;
     enableFishIntegration = true;
   };
-
+programs.yazi = {
+  enable = true;
+  enableFishIntegration = true;
+};
   home.stateVersion = "26.05";
 }

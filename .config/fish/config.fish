@@ -84,8 +84,7 @@ end
 
 set -x MAKEFLAGS "-j"(nproc)
 
-# set -x WEBKIT_DISABLE_DMABUF_RENDERER 1
-
+# lf 退出后即cd到最后的路径
 function lf
     set tmp (mktemp)
 
@@ -122,6 +121,8 @@ end
 function cpg
     rsync -a --human-readable --info=progress2 $argv
 end
+
+#yazi 退出后即cd到最后的路径
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
     yazi $argv --cwd-file="$tmp"

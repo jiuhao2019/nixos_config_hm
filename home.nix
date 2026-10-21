@@ -28,6 +28,8 @@ in
   xdg.configFile."dunst".source = ./.config/dunst;
   xdg.configFile."lf".source = ./.config/lf;
   xdg.configFile."yazi".source = ./.config/yazi;
+  xdg.configFile."mihomo/config.yaml".source = ./.config/mihomo/config.yaml;
+  xdg.configFile."mihomo/ui".source = ./.config/mihomo/ui;
 
 home.packages =
   (with pkgs; [

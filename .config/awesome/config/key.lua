@@ -228,7 +228,8 @@ globalkeys = gears.table.join(
 	end, { description = "toggle wibox", group = "awesome" }),
 
 	awful.key({ modkey }, "y", function()
-		awful.spawn.with_shell("sudo env WEBKIT_DISABLE_DMABUF_RENDERER=1 $(which clash-verge)")
+		-- awful.spawn.with_shell("sudo env WEBKIT_DISABLE_DMABUF_RENDERER=1 $(which clash-verge)")
+		awful.spawn.with_shell("mihomo -f ~/.config/mihomo/providers/gougou.yaml")
 	end),
 
 	awful.key({ modkey }, "Return", function()

@@ -228,9 +228,6 @@ globalkeys = gears.table.join(
 	end, { description = "toggle wibox", group = "awesome" }),
 
 	awful.key({ modkey }, "y", function()
-		-- awful.spawn.with_shell("/opt/v2rayn-bin/v2rayN")
-		-- awful.spawn.with_shell("/opt/mihomo-party/mihomo-party")
-		-- awful.spawn.with_shell("clash-verge")
 		awful.spawn.with_shell("sudo env WEBKIT_DISABLE_DMABUF_RENDERER=1 $(which clash-verge)")
 	end),
 

@@ -35,11 +35,16 @@
 
   time.timeZone = "Asia/Shanghai";
 
+  nixpkgs.overlays = [
+    inputs.helium-flake.overlays.default
+  ];
+
   environment.systemPackages = (with pkgs; [
     wget
     curl
     git
     ungoogled-chromium
+    helium
   ])
   # ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
   ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
